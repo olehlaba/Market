@@ -9,6 +9,9 @@
 <body>
     <header>
         <h1>Магазин товарів</h1>
+        <div class="cart">
+            <button id="cartButton">Кошик (<span id="cartCount">0</span>)</button>
+        </div>
     </header>
 
     <main>
@@ -16,17 +19,31 @@
             <h2>Товар 1</h2>
             <img src="https://via.placeholder.com/150" alt="Товар 1">
             <p class="price">Ціна: 1000 грн</p>
+            <button class="add-to-cart" data-name="Товар 1" data-price="1000">Додати до кошика</button>
         </section>
 
         <section class="product">
             <h2>Товар 2</h2>
             <img src="https://via.placeholder.com/150" alt="Товар 2">
             <p class="price">Ціна: 1500 грн</p>
+            <button class="add-to-cart" data-name="Товар 2" data-price="1500">Додати до кошика</button>
         </section>
     </main>
 
     <footer>
         <p>© 2024 Магазин товарів</p>
     </footer>
+
+    <!-- Модальне вікно кошика -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Кошик</h2>
+            <ul id="cartItems"></ul>
+            <p>Загальна сума: <span id="totalPrice">0</span> грн</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
