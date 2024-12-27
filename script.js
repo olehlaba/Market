@@ -78,15 +78,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
         alert(`Оплата успішна! Сума: ${totalPrice} грн`);
     });
-
-    // Прокручування товарів
-    document.getElementById("scrollLeft").onclick = function () {
-        const products = document.getElementById("productList");
-        products.style.transform = "translateX(0)";
-    };
-
-    document.getElementById("scrollRight").onclick = function () {
-        const products = document.getElementById("productList");
-        products.style.transform = "translateX(-100%)";
-    };
 });
