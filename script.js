@@ -27,7 +27,6 @@ function updateCartCount() {
 
 // Відкриває нове поп-ап вікно для кошика
 function openCartPopup() {
-    console.log("Відкриття поп-ап вікна");
     const cartContent = cart.map(
         (product) =>
             `${product.name} (x${product.quantity}) - ${product.price * product.quantity} грн`
