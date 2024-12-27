@@ -27,26 +27,36 @@ footer {
 
 .product-container {
     display: flex;
-    align-items: center;
     justify-content: center;
-    position: relative;
-    overflow: hidden;
+    flex-wrap: wrap;
+    margin: 20px;
 }
 
 .products {
     display: flex;
-    transition: transform 0.5s ease;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .product {
     margin: 10px;
     width: 200px;
     text-align: center;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
 }
 
 .product img {
     width: 100%;
     height: auto;
+    border-radius: 5px;
 }
 
 .price {
@@ -61,31 +71,11 @@ footer {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .add-to-cart:hover {
     background-color: #45a049;
-}
-
-.scroll-btn {
-    position: absolute;
-    top: 50%;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.scroll-btn.left {
-    left: 10px;
-    transform: translateY(-50%);
-}
-
-.scroll-btn.right {
-    right: 10px;
-    transform: translateY(-50%);
 }
 
 .modal {
@@ -102,17 +92,21 @@ footer {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .close {
     color: #aaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
 }
 
 .close:hover,
@@ -120,4 +114,40 @@ footer {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#cartItems {
+    list-style: none;
+    padding: 0;
+}
+
+#cartItems li {
+    margin: 10px 0;
+}
+
+#paymentForm {
+    margin-top: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #45a049;
 }
