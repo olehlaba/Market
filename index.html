@@ -36,15 +36,83 @@
         <p>© 2024 Магазин товарів</p>
     </footer>
 
-    <!-- Кошик -->
+    <!-- Модальне вікно для кошика -->
     <div id="cartModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Кошик</h2>
             <ul id="cartItems"></ul>
             <p>Загальна сума: <span id="totalPrice">0</span> грн</p>
+            <!-- Поля для оплати -->
+            <form id="paymentForm">
+                <h3>Оплата</h3>
+                <label for="cardNumber">Номер картки:</label><br>
+                <input type="text" id="cardNumber" maxlength="16" placeholder="0000 0000 0000 0000" required><br><br>
+                <label for="cardExpiry">Термін дії (MM/YY):</label><br>
+                <input type="text" id="cardExpiry" maxlength="5" placeholder="MM/YY" required><br><br>
+                <label for="cardCVC">CVC:</label><br>
+                <input type="text" id="cardCVC" maxlength="3" placeholder="CVC" required><br><br>
+                <button type="button" id="payButton">Оплатити</button>
+            </form>
         </div>
     </div>
-<script src="script.js"></script>
-   
+
+    <script src="script.js"></script>
+
+    <style>
+        form {
+            margin-top: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </body>
+</html>
