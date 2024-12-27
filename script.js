@@ -39,7 +39,6 @@ function showCart() {
         totalPrice += product.price * product.quantity;
     });
 
-    // Оновлюємо загальну суму
     document.getElementById("totalPrice").innerText = totalPrice;
 }
 
@@ -79,4 +78,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         alert(`Оплата успішна! Сума: ${totalPrice} грн`);
     });
+
+    // Прокручування товарів
+    document.getElementById("scrollLeft").onclick = function () {
+        const products = document.getElementById("productList");
+        products.style.transform = "translateX(0)";
+    };
+
+    document.getElementById("scrollRight").onclick = function () {
+        const products = document.getElementById("productList");
+        products.style.transform = "translateX(-100%)";
+    };
 });
