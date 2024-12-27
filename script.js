@@ -8,7 +8,6 @@ function addToCart(productName, productPrice) {
         quantity: 1,
     };
 
-    // Перевіряємо, чи товар уже є в кошику
     const existingProduct = cart.find((item) => item.name === product.name);
 
     if (existingProduct) {
@@ -17,7 +16,6 @@ function addToCart(productName, productPrice) {
         cart.push(product);
     }
 
-    // Оновлюємо кількість товарів у кошику
     updateCartCount();
 }
 
@@ -27,50 +25,62 @@ function updateCartCount() {
     document.getElementById("cartCount").innerText = cartCount;
 }
 
-// Відображає вміст кошика
-function showCart() {
-    const cartItems = document.getElementById("cartItems");
-    cartItems.innerHTML = ""; // Очищаємо попередній вміст
+// Відкриває нове поп-ап вікно для кошика
+function openCartPopup() {
+    const cartContent = cart.map(
+        (product) =>
+            `${product.name} (x${product.quantity}) - ${product.price * product.quantity} грн`
+    );
 
-    let totalPrice = 0;
+    const totalPrice = cart.reduce(
+        (total, product) => total + product.price * product.quantity,
+        0
+    );
 
-    cart.forEach((product) => {
-        const li = document.createElement("li");
-        li.innerText = `${product.name} (x${product.quantity}) - ${product.price * product.quantity} грн`;
-        cartItems.appendChild(li);
-        totalPrice += product.price * product.quantity;
-    });
+    // Вміст вікна
+    const popupContent = `
+        <html>
+        <head>
+            <title>Кошик</title>
+            <style>
+                body { font-family: Arial, sans-serif; padding: 20px; }
+                h2 { margin-bottom: 20px; }
+                ul { list-style-type: none; padding: 0; }
+                li { margin-bottom: 10px; }
+                p { font-weight: bold; margin-top: 20px; }
+            </style>
+        </head>
+        <body>
+            <h2>Кошик</h2>
+            <ul>
+                ${cartContent.map((item) => `<li>${item}</li>`).join("")}
+            </ul>
+            <p>Загальна сума: ${totalPrice} грн</p>
+        </body>
+        </html>
+    `;
 
-    // Оновлюємо загальну суму
-    document.getElementById("totalPrice").innerText = totalPrice;
+    // Відкриття поп-ап вікна
+    const popupWindow = window.open(
+        "",
+        "cartPopup",
+        "width=400,height=400,scrollbars=yes,resizable=no"
+    );
+
+    popupWindow.document.open();
+    popupWindow.document.write(popupContent);
+    popupWindow.document.close();
 }
 
 // Додаємо обробники подій
 document.addEventListener("DOMContentLoaded", () => {
-    // Модальне вікно кошика
     const cartButton = document.getElementById("cartButton");
-    const modal = document.getElementById("cartModal");
-    const closeBtn = document.getElementsByClassName("close")[0];
 
-    // Відкрити модальне вікно кошика
+    // Відкрити кошик у поп-ап вікні
     cartButton.onclick = function () {
-        showCart();
-        modal.style.display = "block";
+        openCartPopup();
     };
 
-    // Закрити модальне вікно
-    closeBtn.onclick = function () {
-        modal.style.display = "none";
-    };
-
-    // Закриття модального вікна при кліку поза ним
-    window.onclick = function (event) {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
-    };
-
-    // Додаємо обробники для кнопок "Додати до кошика"
     const addToCartButtons = document.getElementsByClassName("add-to-cart");
 
     for (let button of addToCartButtons) {
